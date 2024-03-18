@@ -1,11 +1,15 @@
+import { useRef } from "react";
+
+import CompanyLogos from "./CompanyLogos";
+import Notification from "./Notification";
+import Generating from "./Generating";
 import Section from "./Section";
 import Button from "./Button";
 
-import { ScrollParallax } from "react-just-parallax";
-import { heroIcons } from "../constants";
 import { BackgroundCircles, BottomLine, Gradient } from "./design/Hero";
 import { curve, robot, heroBackground } from "../assets";
-import { useRef } from "react";
+import { ScrollParallax } from "react-just-parallax";
+import { heroIcons } from "../constants";
 
 const Hero = () => {
   const parallaxRef = useRef(null);
@@ -55,6 +59,17 @@ const Hero = () => {
                 />
 
                 <ScrollParallax isAbsolutelyPositioned>
+                  <Generating className="absolute bottom-5 left-4 right-4 md:bottom-8 md:left-1/2 md:right-auto md:w-[31rem] md:-translate-x-1/2" />
+                </ScrollParallax>
+
+                <ScrollParallax isAbsolutelyPositioned>
+                  <Notification
+                    className="absolute -right-[5.5rem] bottom-[11rem] hidden w-[18rem] xl:flex"
+                    title="Code Generation"
+                  />
+                </ScrollParallax>
+
+                <ScrollParallax isAbsolutelyPositioned>
                   <ul className="absolute -left-[5.5rem] bottom-[7.5rem] hidden rounded-2xl border border-n-1/10 bg-n-9/40 px-1 py-1 backdrop-blur xl:flex">
                     {heroIcons.map((icon, index) => (
                       <li className="p-5" key={index}>
@@ -81,7 +96,11 @@ const Hero = () => {
 
           <BackgroundCircles />
         </div>
+
+        <CompanyLogos className="relative z-10 mt-20 hidden lg:block" />
       </div>
+
+      <BottomLine />
     </Section>
   );
 };
